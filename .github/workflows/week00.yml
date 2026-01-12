@@ -1,0 +1,40 @@
+name: Week 00 - Setup Verification
+
+on:
+  push:
+    paths:
+      - 'week00/**'
+      - '.github/workflows/week00.yml'
+  pull_request:
+    paths:
+      - 'week00/**'
+
+jobs:
+  test-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run Week 00 Python tests
+        run: pytest week00/tests/ -v
+
+  test-rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+      - name: Build Rust verification
+        run: cargo build --manifest-path week00_rust/Cargo.toml
+      - name: Run Rust tests
+        run: cargo test --manifest-path week00_rust/Cargo.toml
+      - name: Check Rust formatting
+        run: cargo fmt --manifest-path week00_rust/Cargo.toml --check
+      - name: Run Clippy
+        run: cargo clippy --manifest-path week00_rust/Cargo.toml -- -D warnings

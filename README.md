@@ -14,6 +14,8 @@ This repository is the template for all IS4010 lab assignments. You will fork th
 
 ```
 is4010-course/
+├── week00/            # Setup Verification (test lab - not graded)
+├── week00_rust/       # Rust setup verification (optional)
 ├── week01/            # Development Toolkit Setup
 ├── week02/            # AI-Assisted Development
 ├── week03/            # Python Basics + Testing
@@ -88,6 +90,28 @@ cargo --version
 # Should show Rust 1.70+ and Cargo
 ```
 
+## Getting Started: Week 00 (Setup Verification)
+
+**Before starting the actual course labs**, complete Week 00 to verify your setup:
+
+```bash
+cd week00/
+# Create lab00.py with two simple functions (see lab00.md)
+pytest tests/ -v      # Run tests locally
+git add week00/
+git commit -m "Complete Week 00 setup verification"
+git push origin main
+# Check GitHub Actions for green checkmark ✅
+```
+
+**Week 00 is a test lab** - it contains no actual course content. It just verifies:
+- ✅ Python and pytest work
+- ✅ Rust toolchain works (optional)
+- ✅ GitHub Actions CI/CD works
+- ✅ You understand the workflow
+
+Once Week 00 passes, you're ready for the real labs!
+
 ## Weekly Workflow
 
 Each week, you'll complete a lab assignment:
@@ -141,6 +165,14 @@ Each lab has an automated GitHub Actions workflow that runs when you push code:
 **You must verify your CI/CD passes before the lab deadline.**
 
 ## Lab Descriptions
+
+### Week 00: Setup Verification (Not Graded)
+
+| Week | Topic |
+|------|-------|
+| 00 | Setup Verification - Test Python & Rust CI/CD |
+
+**Purpose**: Verify your environment works before starting actual labs. Contains trivially simple functions - just for testing!
 
 ### Python Track (Weeks 1-8)
 
