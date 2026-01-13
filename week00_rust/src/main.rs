@@ -6,6 +6,7 @@ fn main() {
     println!("If this compiles, your Rust toolchain is working!");
 }
 
+#[allow(dead_code)]
 fn add_numbers(a: i32, b: i32) -> i32 {
     a + b
 }
